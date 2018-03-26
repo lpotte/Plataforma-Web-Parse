@@ -21,6 +21,13 @@ public class Tabla {
     }
 
     public void print_tabla() {
+        System.out.println("*************************************");
+        System.out.println("Tabla "+Numero_de_tabla);
+        System.out.println(Tipo_de_datos);
+        System.out.println("Registros:");
+        for (Object registro : registros) {
+            System.out.println(registro);
+        }
     }
 
     public String getTipo_de_datos() {

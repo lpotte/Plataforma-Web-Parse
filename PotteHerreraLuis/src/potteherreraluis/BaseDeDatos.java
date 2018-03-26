@@ -17,6 +17,11 @@ class BaseDeDatos {
     private ArrayList<Tabla> tablas = new ArrayList<>();
 
     public void printAll() {
+        System.out.println("/* \n Número de tablas: "+cantidad_de_tablas);
+        for (Tabla tabla : tablas) {
+            tabla.print_tabla();
+        }
+        System.out.println("*/");
     }
 
     public void addRegistro(ArrayList Registro) {
@@ -40,6 +45,7 @@ class BaseDeDatos {
             tab.agregar_registro(Registro);
             tablas.add(tab);
         }
+        cantidad_de_tablas++;
     }
 
     private String obtenerTipo(Object ob) {
