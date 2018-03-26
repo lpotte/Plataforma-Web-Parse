@@ -15,7 +15,6 @@ class BaseDeDatos {
 
     private int cantidad_de_tablas;
     private ArrayList<Tabla> tablas = new ArrayList<>();
-    private ArrayList registro = new ArrayList();
 
     public void printAll() {
     }
@@ -24,12 +23,15 @@ class BaseDeDatos {
         String tabla = "";
         boolean b = true;
         for (Object object : Registro) {
-            obtenerTipo(object, tabla);
+            //tabla = tabla + object.getClass().getSimpleName();
+            tabla = tabla + obtenerTipo(object) + ", ";
         }
         for (Tabla tab : tablas) {
             if (tab.getTipo_de_datos().equals(tabla)) {
                 tab.agregar_registro(Registro);
+                tablas.add(tab);
                 b = false;
+                break;
             }
         }
         if (b == true) {
@@ -40,36 +42,31 @@ class BaseDeDatos {
         }
     }
 
-    private void obtenerTipo(Object ob, String tabla) {
+    private String obtenerTipo(Object ob) {
         if (ob instanceof java.lang.String) {
-            registro.add((String) ob);
-            tabla = tabla + "STRING" + ", ";
+            return "STRING";
         } else {
             if (ob instanceof java.lang.Integer) {
-                registro.add((Integer) ob);
-                tabla = tabla + "INTEGER" + ", ";
+                return "INT";
             } else {
                 if (ob instanceof java.lang.Boolean) {
-                    registro.add((Boolean) ob);
-                    tabla = tabla + "BOOLEAN" + ", ";
+                    return "BOOLEAN";
                 } else {
                     if (ob instanceof java.lang.Float) {
-                        registro.add((Float) ob);
-                        tabla = tabla + "FLOAT" + ", ";
+                        return "FLOAT";
                     } else {
                         if (ob instanceof java.lang.Long) {
-                            registro.add((Long) ob);
-                            tabla = tabla + "LONG" + ", ";
+                            return "LONG";
                         } else {
                             if (ob instanceof java.lang.Double) {
-                                registro.add((Double) ob);
-                                tabla = tabla + "DOUBLE" + ", ";
+                                return "DOUBLE";
                             }
                         }
                     }
                 }
             }
         }
+        return null;
     }
 
 }

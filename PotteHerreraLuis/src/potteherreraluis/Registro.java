@@ -13,12 +13,14 @@ import java.util.ArrayList;
  */
 class Registro {
 
-    private static ArrayList Contenido = new ArrayList();
+    private static ArrayList Contenido;
 
     public Registro() {
+        Contenido = new ArrayList();
     }
 
     public static ArrayList crearRegistro(Object... Objects) {
+        new Registro();
         for (Object Object1 : Objects) {
             Contenido.add(Object1);
         }

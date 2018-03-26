@@ -12,6 +12,7 @@ import java.util.ArrayList;
  * @author LUIS POTTE
  */
 public class Tabla {
+
     private int Numero_de_tabla;
     private String Tipo_de_datos;
     private ArrayList registros = new ArrayList();
@@ -19,7 +20,7 @@ public class Tabla {
     public Tabla() {
     }
 
-    public void print_tabla(){
+    public void print_tabla() {
     }
 
     public String getTipo_de_datos() {
@@ -27,12 +28,40 @@ public class Tabla {
     }
 
     void agregar_registro(ArrayList Registro) {
-        registros.add(Registro);
+        registros.add(tipo_original(Registro));
     }
 
     public void setTipo_de_datos(String Tipo_de_datos) {
         this.Tipo_de_datos = Tipo_de_datos;
     }
-    
-    
+
+    private ArrayList tipo_original(ArrayList Registro) {
+        ArrayList aux = new ArrayList();
+        for (Object ob : Registro) {
+            if (ob instanceof java.lang.String) {
+                aux.add((String) ob);
+            } else {
+                if (ob instanceof java.lang.Integer) {
+                    aux.add((Integer) ob);
+                } else {
+                    if (ob instanceof java.lang.Boolean) {
+                        aux.add((Boolean) ob);
+                    } else {
+                        if (ob instanceof java.lang.Float) {
+                            aux.add((Float) ob);
+                        } else {
+                            if (ob instanceof java.lang.Long) {
+                                aux.add((Long) ob);
+                            } else {
+                                if (ob instanceof java.lang.Double) {
+                                    aux.add((Double) ob);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return aux;
+    }
 }
