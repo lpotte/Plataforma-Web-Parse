@@ -14,15 +14,25 @@ import java.util.ArrayList;
 public class Tabla {
     private int Numero_de_tabla;
     private String Tipo_de_datos;
-    private ArrayList regitros = new ArrayList();
+    private ArrayList registros = new ArrayList();
 
     public Tabla() {
     }
 
     public void print_tabla(){
     }
-    
-    public void agregar_registro(){
-        
+
+    public String getTipo_de_datos() {
+        return Tipo_de_datos;
     }
+
+    void agregar_registro(ArrayList Registro) {
+        registros.add(Registro);
+    }
+
+    public void setTipo_de_datos(String Tipo_de_datos) {
+        this.Tipo_de_datos = Tipo_de_datos;
+    }
+    
+    
 }

@@ -16,10 +16,12 @@ class Registro {
     private static ArrayList Contenido = new ArrayList();
 
     public Registro() {
-        Contenido.add(1);
     }
 
     public static ArrayList crearRegistro(Object... Objects) {
+        for (Object Object1 : Objects) {
+            Contenido.add(Object1);
+        }
         return Contenido;
     }
 
@@ -28,5 +30,8 @@ class Registro {
     }
     
     public void Print_Registro(){
+        for (Object object : Contenido) {
+            System.out.print(object+",");
+        }
     }
 }
