@@ -26,8 +26,16 @@ public class Tabla {
         System.out.println(Tipo_de_datos);
         System.out.println("Registros:");
         for (Object registro : registros) {
-            System.out.println(registro);
+            for (Object obj : (ArrayList)registro) {
+                print_tipo_original(obj);
+                System.out.print(", ");
+            }
+            System.out.print("\n");
         }
+    }
+
+    public void setNumero_de_tabla(int Numero_de_tabla) {
+        this.Numero_de_tabla = Numero_de_tabla;
     }
 
     public String getTipo_de_datos() {
@@ -35,33 +43,31 @@ public class Tabla {
     }
 
     void agregar_registro(ArrayList Registro) {
-        registros.add(tipo_original(Registro));
+        registros.add((Registro));
     }
 
     public void setTipo_de_datos(String Tipo_de_datos) {
         this.Tipo_de_datos = Tipo_de_datos;
     }
 
-    private ArrayList tipo_original(ArrayList Registro) {
-        ArrayList aux = new ArrayList();
-        for (Object ob : Registro) {
+    private void print_tipo_original(Object ob) {
             if (ob instanceof java.lang.String) {
-                aux.add((String) ob);
+                System.out.print((String) ob);
             } else {
                 if (ob instanceof java.lang.Integer) {
-                    aux.add((Integer) ob);
+                    System.out.print((Integer) ob);
                 } else {
                     if (ob instanceof java.lang.Boolean) {
-                        aux.add((Boolean) ob);
+                        System.out.print((Boolean) ob);
                     } else {
                         if (ob instanceof java.lang.Float) {
-                            aux.add((Float) ob);
+                            System.out.print((Float) ob);
                         } else {
                             if (ob instanceof java.lang.Long) {
-                                aux.add((Long) ob);
+                                System.out.print((Long) ob);
                             } else {
                                 if (ob instanceof java.lang.Double) {
-                                    aux.add((Double) ob);
+                                    System.out.print((Double) ob);
                                 }
                             }
                         }
@@ -69,6 +75,4 @@ public class Tabla {
                 }
             }
         }
-        return aux;
-    }
 }

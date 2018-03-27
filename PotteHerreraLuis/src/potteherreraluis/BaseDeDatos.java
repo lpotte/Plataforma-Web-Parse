@@ -13,11 +13,11 @@ import java.util.ArrayList;
  */
 class BaseDeDatos {
 
-    private int cantidad_de_tablas;
+    private int cantidad_de_tablas = 0;
     private ArrayList<Tabla> tablas = new ArrayList<>();
 
     public void printAll() {
-        System.out.println("/* \n Número de tablas: "+cantidad_de_tablas);
+        System.out.println("/* \n Número de tablas: " + cantidad_de_tablas);
         for (Tabla tabla : tablas) {
             tabla.print_tabla();
         }
@@ -34,7 +34,6 @@ class BaseDeDatos {
         for (Tabla tab : tablas) {
             if (tab.getTipo_de_datos().equals(tabla)) {
                 tab.agregar_registro(Registro);
-                tablas.add(tab);
                 b = false;
                 break;
             }
@@ -43,9 +42,10 @@ class BaseDeDatos {
             Tabla tab = new Tabla();
             tab.setTipo_de_datos(tabla);
             tab.agregar_registro(Registro);
+            tab.setNumero_de_tabla(cantidad_de_tablas);
+            cantidad_de_tablas++;
             tablas.add(tab);
         }
-        cantidad_de_tablas++;
     }
 
     private String obtenerTipo(Object ob) {
